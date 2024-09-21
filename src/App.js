@@ -1,24 +1,77 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Login from "./components/Login";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./pages/NotFound";
+import NoAccess from "./pages/NoAccess";
+import Educations from "./pages/Eğitimler/Educations";
+import Teachers from "./pages/Personnels/Personnels";
+import Categories from "./pages/Categories/Categories";
+import CategoryForm from "./pages/Categories/CategoryForm";
+import PersonnelForm from "./pages/Personnels/PersonnelForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ToastContainer />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/educations"
+            element={
+              <ProtectedRoute>
+                <Educations />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/personnels"
+            element={
+              <ProtectedRoute>
+                <Teachers />
+              </ProtectedRoute>
+            }
+          />
+           <Route path="/personnel/create" element={<PersonnelForm />} />
+           <Route path="/personnel/edit/:id" element={<PersonnelForm />} />
+
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/categories"
+            element={
+              <ProtectedRoute>
+                <Categories />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/category/create" element={<CategoryForm />} />
+          <Route path="/category/edit/:id" element={<CategoryForm />} />
+          <Route path="/no-access" element={<NoAccess />} />
+
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
