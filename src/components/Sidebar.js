@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { role } from "../App";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -43,7 +44,9 @@ const Sidebar = () => {
             Eğitimler
           </Link>
         </li>
-        <li>
+      {role === "Admin" && (<>
+
+      <li>
           <Link
             className={`block text-white py-2 px-4 rounded ${isActive("/personnels") ? "bg-blue-900" : "bg-blue-500 hover:bg-blue-600"}`}
             to="/personnels"
@@ -59,16 +62,8 @@ const Sidebar = () => {
             Kategoriler
           </Link>
         </li>
-        {localStorage.getItem("role") === "admin" && (
-          <li>
-            <Link
-              className={`block text-white py-2 px-4 rounded ${isActive("/admin") ? "bg-blue-900" : "bg-blue-500 hover:bg-blue-600"}`}
-              to="/admin"
-            >
-              Yönetim Paneli
-            </Link>
-          </li>
-        )}
+        </>  
+      )}
         <li className="mt-auto">
           <button
             onClick={handleLogout}
