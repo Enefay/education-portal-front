@@ -57,7 +57,7 @@ const EducationDetail = () => {
                 );
             }else if(educationUser.joinRequestStatus === 0)
             {
-                setStatusMessage("Eğitimden ayrıldınız. Tekrar katılma talebi oluşturabilirsiniz.");
+                setStatusMessage("Tekrar katılma talebi oluşturabilirsiniz.");
                 setActionButton(
                     <button onClick={requestJoin} className="bg-green-500 text-white py-2 px-4 rounded">Tekrar Katıl</button>
                 );

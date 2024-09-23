@@ -34,7 +34,7 @@ const Educations = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="py-2 px-4 border-b bg-gray-100">ID</th>
+              <th className="py-2 px-4 border-b bg-gray-100">Sıra</th>
               <th className="py-2 px-4 border-b bg-gray-100">Eğitim</th>
               <th className="py-2 px-4 border-b bg-gray-100">Gün Başı Fiyatı</th>
               <th className="py-2 px-4 border-b bg-gray-100">Başlangıç Tarihi</th>
@@ -44,9 +44,9 @@ const Educations = () => {
             </tr>
           </thead>
           <tbody>
-            {educations && educations?.length > 0 && educations.map((education) => (
+            {educations && educations?.length > 0 && educations.map((education,key) => (
               <tr key={education.id} className="border-b">
-                <td className="py-2 px-4">{education.id}</td>
+                <td className="py-2 px-4">{key+1}</td>
                 <td className="py-2 px-4 text-center">{education.title}</td>
                 <td className="py-2 px-4 text-center">{education.cost}</td>
                 <td className="py-2 px-4 text-center">{new Date(education.startDate).toLocaleDateString()}</td>

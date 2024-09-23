@@ -46,7 +46,7 @@ const PendingRequests = () => {
         const requestIds = selectedRequests.map(id => parseInt(id));
     const data = {
         requestIds,  
-        approve: true  
+        approve: false  
     };
 
         await api.put("/EducationUsers/EvaluateRequests", data);

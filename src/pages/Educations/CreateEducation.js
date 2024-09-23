@@ -108,9 +108,9 @@ const CreateEducation = () => {
 
 
     formData.contents.forEach((content, index) => {
-      form.append(`contents[${index}].id`, content.id || "");  
+      form.append(`contents[${index}].id`, content.id || 0);  
       form.append(`contents[${index}].type`, content.type);
-      form.append(`contents[${index}].educationId`, id);
+      form.append(`contents[${index}].educationId`, id || 0);
       if (content.file) {
         form.append(`contents[${index}].filePath`, content.file.name);
         form.append(`contents[${index}].file`, content.file);
@@ -121,7 +121,6 @@ const CreateEducation = () => {
     
     
 
-    console.log(formData, "asdas")
     if (id) {
       form.append("id", id);
     }
@@ -131,6 +130,8 @@ const CreateEducation = () => {
       } else {
         await api.post(`/Educations/CreateEducation`, form); // Eğitim oluşturma işlemi
       }
+
+      navigate('/educations')
     } catch (error) {
       console.error("Error creating education:", error);
     }
