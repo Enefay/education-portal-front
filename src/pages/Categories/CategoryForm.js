@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import api from "../../utils/axios"; 
 
 const CategoryForm = () => {
-  const { id } = useParams(); // 
+  const { id } = useParams(); 
   const [category, setCategory] = useState({
     name:""
   });

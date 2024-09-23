@@ -20,7 +20,8 @@ const Login = () => {
         password,
       });
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("role", response.data.role); // Kullanıcı rolünü de saklıyoruz
+      localStorage.setItem("role", response.data.role); 
+      localStorage.setItem("userId", response.data.id); 
       navigate("/"); // Başarılı girişte yönlendirme
 
     } catch (err) {

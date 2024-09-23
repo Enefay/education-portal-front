@@ -3,16 +3,22 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
+import Profile from "./pages/Profile/Profile";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./pages/NotFound";
 import NoAccess from "./pages/NoAccess";
-import Educations from "./pages/Eğitimler/Educations";
+import Educations from "./pages/Educations/Educations";
 import Teachers from "./pages/Personnels/Personnels";
 import Categories from "./pages/Categories/Categories";
 import CategoryForm from "./pages/Categories/CategoryForm";
 import PersonnelForm from "./pages/Personnels/PersonnelForm";
+import CreateEducation from "./pages/Educations/CreateEducation";
+import EducationDetail from "./pages/Educations/EducationDetail";
+import PendingRequests from "./pages/Educations/PendingRequests";
+
+
+export const role = localStorage.getItem("role");
 
 function App() {
   return (
@@ -35,6 +41,16 @@ function App() {
               <ProtectedRoute>
                 <Educations />
               </ProtectedRoute>
+            }
+          />
+            <Route path="/education/create" element={<CreateEducation />} />
+            <Route path="/education/create/:id" element={<CreateEducation />} />
+            <Route path="/education/detail/:id" element={<EducationDetail />} />
+
+            <Route
+            path="/pendingrequests"
+            element={
+              <PendingRequests/>
             }
           />
           <Route

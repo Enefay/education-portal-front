@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../utils/axios"; // Axios instance'ı buradan alıyoruz
+import api from "../../utils/axios"; 
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
